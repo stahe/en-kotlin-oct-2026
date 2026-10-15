@@ -847,7 +847,7 @@
 <h1 id="14-further-reading">14. <span style="color: #2e74b5">Further Reading</span></h1>
 <p>This document introduced the Kotlin language and the most commonly used libraries for writing layered applications, network clients and servers, and web services on the Java Virtual Machine. Here are the main topics that build on this.</p>
 <h2 id="141-processing-xml-documents">14.1. <span style="color: #2e74b5">Processing XML documents</span></h2>
-<p>JSON has largely replaced XML for data exchange, but XML is still in use (configuration files, document formats, existing SOAP services). Kotlin directly uses the API and XML from the JDK package, within the <em>[javax.xml]</em> package:</p>
+<p>JSON has largely replaced XML for data exchange, but XML is still in use (configuration files, document formats, existing SOAP services). Kotlin directly uses the XML API of the JDK, within the <em>[javax.xml]</em> package:</p>
 <ul>
 <li><strong>DOM</strong> (<em>[DocumentBuilder]</em>, <em>[Document]</em>, <em>[Element]</em>): the document is loaded into memory as a tree, which is then traversed and modified;</li>
 <li><strong>StAX</strong> (<em>[XMLStreamReader]</em>, <em>[XMLStreamWriter]</em>): the document is read or written on the fly, without being loaded entirely into memory;</li>
@@ -857,23 +857,23 @@
 <h2 id="142-web-applications">14.2. <span style="color: #2e74b5">Web Applications</span></h2>
 <p>Chapter 13 covers only web services (applications that produce data). For web applications that generate HTML pages, or for other ways to write web services in Kotlin, the following are available:</p>
 <ul>
-<li><strong>Spring MVC</strong> with a template engine like <strong>Thymeleaf</strong>: server-side generated pages. Spring supports Kotlin just as it does Java (data classes, coroutines in controllers, Kotlin for route configuration); the author wrote the course <a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQCBCQYidLpyRKBCFbsGtPDxAXqlcxRg1wNXnP0m1zPiuL4?e=Xb2eGl"><u><span style="color: #0563c1">“Step-by-Step Introduction to the Spring Web Framework”</span></u></a> (September 2026);</li>
+<li><strong>Spring MVC</strong> with a template engine like <strong>Thymeleaf</strong>: server-side generated pages. Spring supports Kotlin just as it does Java (data classes, coroutines in controllers, Kotlin for route configuration); the author wrote the course <a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQDQPOP8jPlWRodnqilZ0IVwAUIxqTMTUUsPq6-V8iqSKpY"><u><span style="color: #0563c1">“Step-by-Step Introduction to the Spring Web Framework”</span></u></a> (September 2026);</li>
 <li><strong>Ktor</strong>, the JetBrains web framework, written in and for Kotlin: HTTP servers and clients built on the coroutines from Chapter 9, configured using Kotlin code rather than annotations;</li>
 <li>other JVM frameworks that support Kotlin: <strong>Quarkus</strong>, <strong>Micronaut</strong>, <strong>Javalin</strong>, and the <strong>Jakarta</strong> application servers <strong>EE</strong>;</li>
-<li>interfaces written in JavaScript (Vue.js, Angular, React) that consume Kotlin web services; the author wrote the course <a href="https://stahe.github.io/java-oct-2026/"><u><span style="color: #0563c1">“Step-by-Step Introduction to the Vue.js Framework</span></u></a>” (September 2026). Kotlin itself can be compiled to JavaScript (Kotlin/JS) or to WebAssembly (Kotlin/Wasm), which also allows the client-side to be written in Kotlin.</li>
+<li>interfaces written in JavaScript (Vue.js, Angular, React) that consume Kotlin web services; the author wrote the course <a href="https://stahe.github.io/en-java-oct-2026/"><u><span style="color: #0563c1">“Step-by-Step Introduction to the Vue.js Framework</span></u></a>” (September 2026). Kotlin itself can be compiled to JavaScript (Kotlin/JS) or to WebAssembly (Kotlin/Wasm), which also allows the client-side to be written in Kotlin.</li>
 </ul>
 <h2 id="143-mobile-and-desktop-applications">14.3. <span style="color: #2e74b5">Mobile and Desktop Applications</span></h2>
 <p>This document does not cover graphical user interfaces: today, management applications are most often built with web interfaces. However, this is an area where Kotlin is widely used:</p>
 <ul>
 <li>on <strong>Android</strong>, Kotlin is the language recommended by Google, and the UI is built using <strong>Jetpack Compose</strong>, a declarative library written entirely in Kotlin; coroutines (Chapter 9) are used to keep the UI responsive during network or database access;</li>
 <li><strong>Compose Multiplatform</strong>, by JetBrains, extends Compose to write desktop (Windows, Linux, macOS), iOS, and web interfaces using the same code;</li>
-<li>More generally, <strong>Kotlin Multiplatform</strong> allows business logic code (the <em>[metier]</em> and <em>[dao]</em> layers in Chapter 6, for example) to be shared between JVM, Android, iOS (via Kotlin/Native, which generates machine code without a virtual machine), and the web;</li>
+<li>More generally, <strong>Kotlin Multiplatform</strong> allows business logic code (the <em>[business] and [dao]</em> layers in Chapter 6, for example) to be shared between JVM, Android, iOS (via Kotlin/Native, which generates machine code without a virtual machine), and the web;</li>
 <li>on JVM, the Java <strong>Swing</strong> and <strong>JavaFX</strong> libraries remain usable from Kotlin. The concepts covered in Chapters 7 (event listeners) and 9 (returning to the GUI thread with <em>[Dispatchers.Main]</em>) apply directly here.</li>
 </ul>
 <h2 id="144-tests">14.4. <span style="color: #2e74b5">Tests</span></h2>
 <p>Chapter 6 introduces JUnit and <em>[kotlin.test]</em>. These are often supplemented by:</p>
 <ul>
-<li><strong>Kotest</strong>, a testing framework written for Kotlin, offering multiple test-writing styles and a rich library of assertions (<strong><em>[liste shouldHaveSize 7]</em></strong>);</li>
+<li><strong>Kotest</strong>, a testing framework written for Kotlin, offering multiple test-writing styles and a rich library of assertions (<strong><em>[list shouldHaveSize 7]</em></strong>);</li>
 <li><strong>MockK</strong>, the library of “mocks” (simulated objects) for the layers on which the layer under test depends, designed for Kotlin (final classes, objects, suspension functions); <strong>Mockito</strong> remains usable;</li>
 <li><strong>kotlinx-coroutines-test</strong>, which runs tests on coroutine-based code using a virtual clock: a <strong><em>[delay(10_000)]</em></strong> runs instantly;</li>
 <li><strong>Testcontainers</strong>, which launches a real database (MySQL, PostgreSQL…) in a Docker container for the duration of integration tests;</li>
@@ -891,8 +891,8 @@
 <p>A Kotlin program is deployed just like a Java program: as a <em>[.jar]</em> archive executed by a JDK installed on the machine (<strong><em>[java -jar application.jar]</em></strong>), provided that the standard Kotlin library is included (this is what the scripts generated by <strong><em>[gradlew installDist]</em></strong> do, Chapter 2; Spring Boot generates a standalone <em>[.jar]</em> that contains all its libraries), as a standalone application that embeds a virtual machine reduced to only what it needs (tools <em>[jlink]</em> and <em>[jpackage]</em> from JDK), or in a Docker <strong>container</strong> (Spring Boot directly generates a container image via <strong><em>[gradlew bootBuildImage]</em></strong>).</p>
 <h2 id="147-resources">14.7. <span style="color: #2e74b5">Resources</span></h2>
 <ul>
-<li>the official Kotlin website, with its documentation, tutorials, and “What’s New” pages for each release:<a href="https://stahe.github.io/csharp-oct-2026/"><u><span style="color: #0563c1"> https://kotlinlang.org</span></u></a>;</li>
-<li>the <a href="https://stahe.github.io/csharp-mai-2008/"><u><span style="color: #0563c1">Kotlin Playground</span></u></a> online sandbox, for trying out Kotlin code in a browser;</li>
+<li>the official Kotlin website, with its documentation, tutorials, and “What’s New” pages for each release:<a href="https://stahe.github.io/en-csharp-oct-2026/"><u><span style="color: #0563c1"> https://kotlinlang.org</span></u></a>;</li>
+<li>the <a href="https://stahe.github.io/en-csharp-mai-2008/"><u><span style="color: #0563c1">Kotlin Playground</span></u></a> online sandbox, for trying out Kotlin code in a browser;</li>
 <li>the <strong>Kotlin Koans</strong> exercises, available on the Kotlin website and in IntelliJ IDEA;</li>
 <li>language evolution proposals (KEEP), to stay up to date on what’s new in upcoming versions:<a href="https://kotlinlang.org/docs/home.html"><u><span style="color: #0563c1"> https://github.com/Kotlin/KEEP</span></u></a>;</li>
 <li>the source code for the compiler and the standard library, available at GitHub: <a href="https://kotlinlang.org/api/core/kotlin-stdlib/"><u><span style="color: #0563c1">https://github.com/JetBrains/kotlin</span></u></a>, and the source code for coroutines:<a href="https://kotlinlang.org/docs/coroutines-guide.html"><u><span style="color: #0563c1"> https://github.com/Kotlin/kotlinx.coroutines</span></u></a>;</li>
